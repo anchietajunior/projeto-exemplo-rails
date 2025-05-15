@@ -8,6 +8,7 @@
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Produtos</h1>
     <%= link_to "Novo Produto", new_product_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= link_to "Exportar PDF", report_products_path(format: :pdf), class: "btn btn-primary", target: "_blank" %>
   </div>
 
   <div id="products" class="min-w-full divide-y divide-gray-200 space-y-5">

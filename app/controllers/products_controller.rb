@@ -6,6 +6,30 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def report
+    @products = Product.all
+
+    pdf = Prawn::Document.new
+    pdf.text "Lista de Produtos", size: 20, style: :bold
+    pdf.move_down 20
+
+    table_data = [ [ "Nome", "Preço", "Quantidade" ] ]
+    @products.each do |product|
+      table_data << [
+        product.name,
+        product.price,
+        product.quantity
+      ]
+    end
+
+    pdf.table(table_data, header: true, row_colors: [ "F0F0F0", "FFFFFF" ])
+
+    send_data pdf.render,
+      filename: "Produtos.pdf",
+      type: "application/pdf",
+      disposition: "attachment"
+  end
+
   # GET /products/1
   def show
   end
@@ -53,6 +77,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.expect(product: [ :name, :price, :category_id, :image, :quantity ])
+      params.expect(product: [ :name, :price, :category_id, :image, :quantity, photos: [] ])
     end
 end

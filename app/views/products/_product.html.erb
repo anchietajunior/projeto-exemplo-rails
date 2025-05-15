@@ -1,22 +1,24 @@
 <div id="<%= dom_id product %>" class="w-full sm:w-auto my-5 space-y-5">
   <div>
-    <strong class="block font-medium mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Nome:</strong>
     <%= product.name %>
   </div>
   <div>
-    <strong class="block font-medium mb-1">Price:</strong>
+    <strong class="block font-medium mb-1">Preço:</strong>
     <%= product.price %>
   </div>
   <div>
-    <strong class="block font-medium mb-1">Category:</strong>
-    <%= product.category_id %>
+    <strong class="block font-medium mb-1">Categoria:</strong>
+    <%= product.category.name %>
   </div>
   <div>
-    <strong class="block font-medium mb-1">Image:</strong>
-    <%= product.image %>
+    <strong class="block font-medium mb-1">Imagem:</strong>
+    <% product.photos.each do |photo| %>
+      <%= image_tag photo.variant(resize_to_limit: [200, 200]) %>
+    <% end %>
   </div>
   <div>
-    <strong class="block font-medium mb-1">Quantity:</strong>
+    <strong class="block font-medium mb-1">Quantidade:</strong>
     <%= product.quantity %>
   </div>
 </div>

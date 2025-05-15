@@ -68,3 +68,19 @@ app/assets/stylesheets/application.css
 Podem utilizar praticamente todas as bibliotecas ou JS puro no arquivo:
 
 app/javascript/application.js
+
+# Upload de arquivos
+
+Configuração do Active Storage
+
+[Docs](https://guides.rubyonrails.org/active_storage_overview.html#has-many-attached)
+
+É necessário instalar o Vips, dependência para manusear arquivos.
+
+[Vips](https://www.libvips.org/)
+
+# Geração de PDF
+
+[Gem Prawn](https://github.com/prawnpdf/prawn)
+
+Código no arquivo app/controllers/products_controller.rb
